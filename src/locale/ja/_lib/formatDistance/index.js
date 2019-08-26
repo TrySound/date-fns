@@ -1,7 +1,9 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: '1秒以下',
-    other: '{{count}}秒以下'
+    one: '1秒未満',
+    other: '{{count}}秒未満',
+    oneWithSuffix: '約1秒',
+    otherWithSuffix: '約{{count}}秒'
   },
 
   xSeconds: {
@@ -9,11 +11,13 @@ var formatDistanceLocale = {
     other: '{{count}}秒'
   },
 
-  halfAMinute: '30秒ぐらい',
+  halfAMinute: '30秒',
 
   lessThanXMinutes: {
-    one: '1分以下',
-    other: '{{count}}分以下'
+    one: '1分未満',
+    other: '{{count}}分未満',
+    oneWithSuffix: '約1分',
+    otherWithSuffix: '約{{count}}分'
   },
 
   xMinutes: {
@@ -22,8 +26,8 @@ var formatDistanceLocale = {
   },
 
   aboutXHours: {
-    one: '1時間ぐらい',
-    other: '{{count}}時間ぐらい'
+    one: '約1時間',
+    other: '約{{count}}時間'
   },
 
   xHours: {
@@ -37,18 +41,18 @@ var formatDistanceLocale = {
   },
 
   aboutXMonths: {
-    one: '1ヶ月ぐらい',
-    other: '{{count}}ヶ月ぐらい'
+    one: '約1か月',
+    other: '約{{count}}か月'
   },
 
   xMonths: {
-    one: '1ヶ月',
-    other: '{{count}}ヶ月'
+    one: '1か月',
+    other: '{{count}}か月'
   },
 
   aboutXYears: {
-    one: '1年ぐらい',
-    other: '{{count}}年ぐらい'
+    one: '約1年',
+    other: '約{{count}}年'
   },
 
   xYears: {
@@ -62,21 +66,32 @@ var formatDistanceLocale = {
   },
 
   almostXYears: {
-    one: '1年以下',
-    other: '{{count}}年以下'
+    one: '1年近く',
+    other: '{{count}}年近く'
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+    if (options.addSuffix && formatDistanceLocale[token].oneWithSuffix) {
+      result = formatDistanceLocale[token].oneWithSuffix
+    } else {
+      result = formatDistanceLocale[token].one
+    }
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    if (options.addSuffix && formatDistanceLocale[token].otherWithSuffix) {
+      result = formatDistanceLocale[token].otherWithSuffix.replace(
+        '{{count}}',
+        count
+      )
+    } else {
+      result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    }
   }
 
   if (options.addSuffix) {

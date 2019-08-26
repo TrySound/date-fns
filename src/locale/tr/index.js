@@ -11,6 +11,11 @@ import match from './_lib/match/index.js'
  * @language Turkish
  * @iso-639-2 tur
  * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
+ * @author Berkay Sargın [@berkaey]{@link https://github.com/berkaey}
+ * @author Ismail Demirbilek [@dbtek]{@link https://github.com/dbtek}
+ * @author İsmail Kayar [@ikayar]{@link https://github.com/ikayar}
+ *
+ *
  */
 var locale = {
   formatDistance: formatDistance,

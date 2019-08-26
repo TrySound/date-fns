@@ -19,32 +19,11 @@ dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Prepare ES5-compatible files
+# Traspile CommonJS versions of files
+env TARGET='commonjs' babel src --source-root src --out-dir "$dir" --ignore test.js,benchmark.js --copy-files --quiet
 
-# Compile ES files on top of the already copied files leaving
-# all non *.js files in place as expected
-babel src --source-root src --out-dir "$dir" --ignore test.js,benchmark.js --copy-files --quiet
-
-# Copy ES (a.k.a. ES6, ES2016, ES2017, etc.) files
-
-# Copy the source code
-for fnDir in $(find src -type d -maxdepth 1 -mindepth 1 | sed 's/src\///' | sed 's/\///')
-do
-  if [ "$fnDir" == "esm" ]
-  then
-    continue
-  fi
-
-  cp -r "./src/$fnDir" "$dir/esm/"
-done
-
-# Copy global flow typing
-cp ./src/index.js.flow "$dir/esm/index.js.flow"
-
-# Copy esm indices
-cp ./src/esm/index.js "$dir/esm/index.js"
-cp ./src/esm/fp/index.js "$dir/esm/fp/index.js"
-cp ./src/esm/locale/index.js "$dir/esm/locale/index.js"
+# Traspile ESM versions of files
+env TARGET='esm' babel src --source-root src --out-dir "$dir/esm" --ignore test.js,benchmark.js,package.json --copy-files --quiet
 
 # Copy basic files
 for pattern in CHANGELOG.md \
@@ -57,41 +36,15 @@ do
   cp -r "$pattern" "$dir"
 done
 
+# Remove clean up code when this issues is resolved:
+# https://github.com/babel/babel/issues/6226
+
 # Clean up dev code
 find "$dir" -type f -name "test.js" -delete
 find "$dir" -type f -name "benchmark.js" -delete
 
-# Copy TypeScript's sub_module_package.json to root directories
-for module in $dir/*/
-do
-  module=${module%*/}
-  cp scripts/build/templates/subModulePackage.json "$module/package.json"
-done
+# Clean up package.json pointing to the modules
+find "$dir/esm" -type f -name "package.json" -delete
 
-# Copy TypeScript's sub_sub_module_package.json to locale directories
-for locale in $dir/locale/*/
-do
-  locale=${locale%*/}
-  cp scripts/build/templates/subSubModulePackage.json "$locale/package.json"
-done
-
-# Copy TypeScript's sub_sub_module_package.json to es directories
-for esmModule in $dir/esm/*/
-do
-  esmModule=${esmModule%*/}
-  cp scripts/build/templates/subSubModulePackage.json "$esmModule/package.json"
-done
-
-# Copy TypeScript's sub_sub_sub_module_package.json to es locale directories
-for esmLocale in $dir/esm/locale/*/
-do
-  esmLocale=${esmLocale%*/}
-  cp scripts/build/templates/subSubSubModulePackage.json "$esmLocale/package.json"
-done
-
-# Copy TypeScript's sub_sub_sub_module_package.json to fp locale directories
-for esmFPModule in $dir/esm/fp/*/
-do
-  esmFPModule=${esmFPModule%*/}
-  cp scripts/build/templates/subSubSubModulePackage.json "$esmFPModule/package.json"
-done
+./scripts/build/packages.js
+./scripts/build/removeOutdatedLocales.js $dir

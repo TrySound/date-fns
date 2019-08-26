@@ -11,6 +11,7 @@ import match from './_lib/match/index.js'
  * @language Portuguese
  * @iso-639-2 por
  * @author Dário Freire [@dfreire]{@link https://github.com/dfreire}
+ * @author Adrián de la Rosa [@adrm]{@link https://github.com/adrm}
  */
 var locale = {
   formatDistance: formatDistance,

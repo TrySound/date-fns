@@ -3,8 +3,6 @@ import formatLong from './_lib/formatLong/index.js'
 import formatRelative from './_lib/formatRelative/index.js'
 import localize from './_lib/localize/index.js'
 import match from './_lib/match/index.js'
-import formatters from './_lib/formatters/index.js'
-import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
 
 /**
  * @type {Locale}
@@ -12,6 +10,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @summary Greek locale.
  * @language Greek
  * @iso-639-2 ell
+ * @author Fanis Katsimpas [@fanixk]{@link https://github.com/fanixk}
  * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
  */
 var locale = {
@@ -20,8 +19,6 @@ var locale = {
   formatRelative: formatRelative,
   localize: localize,
   match: match,
-  formatters: formatters,
-  formattingTokensRegExp: buildTokensRegExp(formatters),
   options: {
     weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 4

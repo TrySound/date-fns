@@ -12,6 +12,8 @@ import match from './_lib/match/index.js'
  * @iso-639-2 zho
  * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}
  * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
+ * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
+ * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
  */
 var locale = {
   formatDistance: formatDistance,

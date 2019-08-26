@@ -11,6 +11,7 @@ import match from './_lib/match/index.js'
  * @language Catalan
  * @iso-639-2 cat
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
+ * @author Alex Vizcaino [@avizcaino]{@link https://github.com/avizcaino}
  */
 var locale = {
   formatDistance: formatDistance,
@@ -25,3 +26,5 @@ var locale = {
 }
 
 export default locale
+
+// throw new Error('ca locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')

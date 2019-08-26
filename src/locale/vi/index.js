@@ -10,8 +10,8 @@ import match from './_lib/match/index.js'
  * @summary Vietnamese locale (Vietnam).
  * @language Vietnamese
  * @iso-639-2 vie
- *
  * @author Thanh Tran [@trongthanh]{@link https://github.com/trongthanh}
+ * @author Leroy Hopson [@lihop]{@link https://github.com/lihop}
  */
 var locale = {
   formatDistance: formatDistance,

@@ -11,6 +11,7 @@ import match from './_lib/match/index.js'
  * @language Chinese Traditional
  * @iso-639-2 zho
  * @author tonypai [@tpai]{@link https://github.com/tpai}
+ * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
  */
 var locale = {
   formatDistance: formatDistance,
@@ -19,8 +20,8 @@ var locale = {
   localize: localize,
   match: match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4
   }
 }
 

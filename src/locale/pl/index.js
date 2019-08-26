@@ -12,6 +12,8 @@ import match from './_lib/match/index.js'
  * @iso-639-2 pol
  * @author Mateusz Derks [@ertrzyiks]{@link https://github.com/ertrzyiks}
  * @author Just RAG [@justrag]{@link https://github.com/justrag}
+ * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
+ * @author Mateusz Tokarski [@mutisz]{@link https://github.com/mutisz}
  */
 var locale = {
   formatDistance: formatDistance,

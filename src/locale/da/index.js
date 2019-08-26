@@ -10,6 +10,7 @@ import match from './_lib/match/index.js'
  * @summary Danish locale.
  * @language Danish
  * @iso-639-2 dan
+ * @author Mathias Wøbbe [@MathiasKandelborg]{@link https://github.com/MathiasKandelborg}
  * @author Anders B. Hansen [@Andersbiha]{@link https://github.com/Andersbiha}
  * @author [@kgram]{@link https://github.com/kgram}
  * @author [@stefanbugge]{@link https://github.com/stefanbugge}

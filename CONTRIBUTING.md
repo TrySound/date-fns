@@ -8,6 +8,10 @@
 
 - [Getting Started](#getting-started)
 
+- [Testing](#testing)
+
+- [Before Sending a Pull Request](#before-sending-a-pull-request)
+
 - [Code Style Guide](#code-style-guide)
 
   - [Lint the Code](#lint-the-code)
@@ -70,30 +74,70 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 - Don't change the library version.
 
-[Write good commit messages]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-[CHANGELOG]: https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md
+[write good commit messages]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+[changelog]: https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md
 
 ## Getting Started
 
-1. [Install Node.js](https://nodejs.org/en/download).
+1. Install [Node.js](https://nodejs.org/en/download) and [Yarn](https://yarnpkg.com/en/docs/install).
 
 2. Fork the project and clone the fork repo.
 
-3. Run `yarn` or `npm install` to install the application dependencies.
+3. Run `yarn` to install the application dependencies.
+
+## Testing
+
+Run all tests:
+
+```sh
+yarn test
+```
+
+Run tests once:
+
+```sh
+yarn test --single-run
+```
+
+To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
+
+```sh
+./node_modules/.bin/babel-node
+
+> const toDate = require('./src/toDate')
+undefined
+> toDate(1392098430000).toString()
+'Tue Feb 11 2014 01:00:30 GMT-0500 (Eastern Standard Time)'
+>
+```
+
+Build date-fns to test in in your project:
+
+```sh
+env PACKAGE_OUTPUT_PATH="$(pwd)/../PATH-TO-YOUR-MODULE/node_modules/date-fns" ./scripts/build/package.sh
+```
+
+## Before Sending a Pull Request
+
+Rebuild FP functions, typings and indices by using the following script. It could take around a minute:
+
+```sh
+./scripts/build/build.sh
+```
 
 ## Code Style Guide
 
 ### Lint the Code
 
-The project follows [JavaScript Standard Style]. To lint the code, run:
+The project follows [Prettier] code style and uses [ESLint] as the linter.
+To lint the code, run:
 
 ```bash
-npm run lint
-# or
-yarn run lint
+yarn lint
 ```
 
-[JavaScript Standard Style]: http://standardjs.com/
+[prettier]: https://prettier.io/
+[eslint]: https://eslint.org/
 
 ### Use EditorConfig
 
@@ -101,7 +145,7 @@ The project uses [EditorConfig] to define basic coding style guides.
 Please install a plugin for your editor of choice or manually enforce
 the rules listed in [.editorconfig].
 
-[EditorConfig]: http://editorconfig.org
+[editorconfig]: http://editorconfig.org
 [.editorconfig]: https://github.com/date-fns/date-fns.org/blob/master/.editorconfig
 
 ## Documentation

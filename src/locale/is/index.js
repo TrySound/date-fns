@@ -11,6 +11,7 @@ import match from './_lib/match/index.js'
  * @language Icelandic
  * @iso-639-2 isl
  * @author Derek Blank [@derekblank]{@link https://github.com/derekblank}
+ * @author Arnór Ýmir [@lamayg]{@link https://github.com/lamayg}
  */
 var locale = {
   formatDistance: formatDistance,

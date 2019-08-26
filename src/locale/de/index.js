@@ -12,6 +12,9 @@ import match from './_lib/match/index.js'
  * @iso-639-2 deu
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Asia [@asia-t]{@link https://github.com/asia-t}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
+ * @author RomanErnst [@pex]{@link https://github.com/pex}
+ * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
  */
 var locale = {
   formatDistance: formatDistance,

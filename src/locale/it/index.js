@@ -11,6 +11,8 @@ import match from './_lib/match/index.js'
  * @language Italian
  * @iso-639-2 ita
  * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
+ * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
+ * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
  */
 var locale = {
   formatDistance: formatDistance,
